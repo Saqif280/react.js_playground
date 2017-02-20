@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>React</title>
+
+  <!-- BOOTSTRAP & JQUERY -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+  <!-- REACT & BABEL-->
+  <script src="https://unpkg.com/react@15/dist/react.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+  <script src="https://npmcdn.com/babel-core@5.8.38/browser.min.js"></script>
+
+  <!-- SITE STYLES & SCRIPTS -->
+  <link rel="stylesheet" href="css/main.css">
+
+</head>
+<body>
+
+  <div id="container"></div>
+
+  <script type="text/babel">
+    var Note = React.createClass({
+      edit: function(){
+        alert("editing comment");
+      },
+      remove: function(){
+        alert("removing comment");
+      },
+      render: function(){
+        return (
+          <div className="col-sm-4">
+            <div className="card">
+              <div className="card-block">
+                <h4 className="card-title">{ this.props.title }</h4>
+                <p className="card-text">{ this.props.children }</p>
+                <a onClick={this.edit} className="btn btn-secondary">Edit</a>
+                <a onClick={this.remove} className="btn btn-danger">Remove</a>
+              </div>
+            </div>
+          </div>
+        )
+      }
+    });
+
+    ReactDOM.render(
+      <div>
+        <div className="header">      
+          <h1>React Notes</h1>
+        </div>
+        <div className="row">      
+          <Note title="Test">This is my first note. I just wanna test things out</Note>
+          <Note title="Buy">This is my second note. I just wanna test things out again</Note>
+          <Note title="Remember">This is my third note. I just wanna test things out ... again</Note>
+          <Note title="Facts">This is my fourth note. I just wanna test things out ONE MORE TIME!</Note>
+          <Note title="Other">This is my second note. I just wanna test things out again</Note>
+          <Note title="Todo">This is my third note. I just wanna test things out ... again</Note>
+          <Note title="Passwords">This is my fourth note. I just wanna test things out ONE MORE TIME!</Note>
+        </div>
+      </div>
+    , document.getElementById('container'));
+  </script>
+
+</body>
+</html>
